@@ -30,8 +30,10 @@ async function changeTemplate(template){
     const componentsPath = resolve(__dirname + '/components');
     const files = await fs.promises.readdir(componentsPath);
     for await (const file of files){
-      let data = await fs.promises.readFile(resolve(componentsPath + '/' + file), 'utf8');
-      template = template.replace(`{{${file.split('.')[0]}}}`, data);
+      if (file.split('.')[1]==='html'){
+        let data = await fs.promises.readFile(resolve(componentsPath + '/' + file), 'utf8');
+        template = template.replace(`{{${file.split('.')[0]}}}`, data);
+      }
     }
     return template;
   }
