@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const dirPath = path.resolve(__dirname);
 
-fs.rmdir(dirPath+'/files-copy', {recursive: true}, (e)=>e?console.log(e):copyDir('files', 'files-copy'));
+fs.rmdir(dirPath+'/files-copy', {recursive: true}, ()=>{copyDir('files', 'files-copy')});
 
 async function copyDir(inputFolder, outputFolder){
   try {
