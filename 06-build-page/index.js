@@ -5,8 +5,7 @@ const dirPath = resolve(__dirname + '/project-dist');
 const stylesPath = resolve(__dirname + '/styles');
 const bundlePath = resolve(__dirname + '/project-dist/style.css');
 
-fs.rmdir(dirPath, {recursive: true}, (err)=>{if (err) throw err;
-else createProject();});
+fs.rmdir(dirPath, {recursive: true}, ()=>{createProject();});
 
 async function createProject(){
   let template = await fs.promises.readFile(resolve(__dirname + '/template.html'), 'utf8');
